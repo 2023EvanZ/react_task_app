@@ -1,23 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { TodoPage } from './Pages/TodoPage';
+import { Show } from './Pages/Show';
+import { Hero } from './Pages/Hero';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Hero />
+      <Router>
+        <Routes>
+          <Route exact path='/' element={<TodoPage />}>
+          </Route>
+          <Route path='/:id' element={<Show />}>
+          </Route>
+        </Routes>
+      </Router>
     </div>
   );
 }
